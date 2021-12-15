@@ -1,8 +1,5 @@
 package com.cleanup.todoc.model;
 
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-
 import java.util.Comparator;
 
 /**
@@ -24,9 +21,6 @@ public class Task {
     /**
      * The name of the task
      */
-    // Suppress warning because setName is called in constructor
-    @SuppressWarnings("NullableProblems")
-    @NonNull
     private String name;
 
     /**
@@ -42,7 +36,7 @@ public class Task {
      * @param name              the name of the task to set
      * @param creationTimestamp the timestamp when the task has been created to set
      */
-    public Task(long id, long projectId, @NonNull String name, long creationTimestamp) {
+    public Task(long id, long projectId, String name, long creationTimestamp) {
         this.setId(id);
         this.setProjectId(projectId);
         this.setName(name);
@@ -61,7 +55,7 @@ public class Task {
     /**
      * Sets the unique identifier of the task.
      *
-     * @param id the unique idenifier of the task to set
+     * @param id the unique identifier of the task to set
      */
     private void setId(long id) {
         this.id = id;
@@ -81,7 +75,6 @@ public class Task {
      *
      * @return the project associated to the task
      */
-    @Nullable
     public Project getProject() {
         return Project.getProjectById(projectId);
     }
@@ -91,7 +84,6 @@ public class Task {
      *
      * @return the name of the task
      */
-    @NonNull
     public String getName() {
         return name;
     }
@@ -101,7 +93,7 @@ public class Task {
      *
      * @param name the name of the task to set
      */
-    private void setName(@NonNull String name) {
+    private void setName(String name) {
         this.name = name;
     }
 
