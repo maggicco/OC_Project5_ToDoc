@@ -187,6 +187,8 @@ public class MainActivity extends AppCompatActivity implements TasksAdapter.Dele
             else if (taskProject != null) {
                 // TODO: Replace this by id of persisted task
                 long id = (long) (Math.random() * 50000);
+                // TODO: 15/12/2021 a voir avec Denis 
+                //long id = getTaskId();
 
 
                 Task task = new Task(
