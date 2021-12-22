@@ -3,28 +3,37 @@ package com.cleanup.todoc.model;
 import androidx.annotation.ColorInt;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.room.ColumnInfo;
+import androidx.room.Entity;
+import androidx.room.PrimaryKey;
 
 /**
  * <p>Models for project in which tasks are included.</p>
  *
  * @author Gaëtan HERFRAY
  */
+@Entity(tableName = "project")
 public class Project {
     /**
      * The unique identifier of the project
      */
+    @PrimaryKey
+    @ColumnInfo(name = "id")
     private final long id;
 
     /**
      * The name of the project
      */
     @NonNull
+    @ColumnInfo(name = "name")
     private final String name;
 
     /**
      * The hex (ARGB) code of the color associated to the project
      */
+    @NonNull
     @ColorInt
+    @ColumnInfo(name = "color")
     private final int color;
 
     /**
@@ -45,12 +54,13 @@ public class Project {
      *
      * @return all the projects of the application
      */
+    // TODO: 20/12/2021 PROJECT LIST Add to database and get from database!!!!
     @NonNull
     public static Project[] getAllProjects() {
         return new Project[]{
-                new Project(1L, "Projet Tartampion", 0xFFEADAD1),
-                new Project(2L, "Projet Lucidia", 0xFFB4CDBA),
-                new Project(3L, "Projet Circus", 0xFFA3CED2),
+//                new Project(1L, "Projet Tartampion", 0xFFEADAD1),
+//                new Project(2L, "Projet Lucidia", 0xFFB4CDBA),
+//                new Project(3L, "Projet Circus", 0xFFA3CED2),
         };
     }
 
