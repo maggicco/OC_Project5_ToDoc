@@ -54,13 +54,13 @@ public class Project {
      *
      * @return all the projects of the application
      */
-    // TODO: 20/12/2021 PROJECT LIST Add to database and get from database!!!!
+    // TODO: 20/12/2021 PROJECT LIST !!!!
     @NonNull
     public static Project[] getAllProjects() {
         return new Project[]{
-//                new Project(1L, "Projet Tartampion", 0xFFEADAD1),
-//                new Project(2L, "Projet Lucidia", 0xFFB4CDBA),
-//                new Project(3L, "Projet Circus", 0xFFA3CED2),
+                new Project(1L, "Projet Tartampion", 0xFFEADAD1),
+                new Project(2L, "Projet Lucidia", 0xFFB4CDBA),
+                new Project(3L, "Projet Circus", 0xFFA3CED2),
         };
     }
 

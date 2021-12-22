@@ -16,10 +16,10 @@ public interface ProjectDao {
     @Query("SELECT * FROM project")
     LiveData<List<Project>> getAllProjects();
 
-    @Query("SELECT * FROM project WHERE id = :projectId")
-    LiveData<List<Project>> getProjectList(long projectId);
+//    @Query("SELECT * FROM project WHERE id = :projectId")
+//    LiveData<List<Project>> getProjectsList(long projectId);
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    void insertAllProject(List<Project> project);
+    void insertAllProjects(Project... project);
 
 }
