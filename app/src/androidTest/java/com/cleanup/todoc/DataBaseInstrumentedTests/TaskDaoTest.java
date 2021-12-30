@@ -1,4 +1,4 @@
-package com.cleanup.todoc;
+package com.cleanup.todoc.DataBaseInstrumentedTests;
 
 import android.support.test.InstrumentationRegistry;
 import android.support.test.runner.AndroidJUnit4;
