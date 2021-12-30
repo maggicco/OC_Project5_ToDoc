@@ -2,6 +2,7 @@ package com.cleanup.todoc.DataBaseInstrumentedTests;
 
 import static org.junit.Assert.assertTrue;
 import android.support.test.InstrumentationRegistry;
+import android.support.test.runner.AndroidJUnit4;
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule;
 import androidx.room.Room;
 import com.cleanup.todoc.Database.SaveMyTaskDataBase;
@@ -11,11 +12,9 @@ import org.junit.Before;
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.junit.runners.JUnit4;
-
 import java.util.List;
 
-@RunWith(JUnit4.class)
+@RunWith(AndroidJUnit4.class)
 public class ProjectDaoTest {
 
     // FOR DATA
@@ -51,15 +50,15 @@ public class ProjectDaoTest {
     private static Project PROJECT_DEMO = new Project(PROJECT_ID, "Projet Tartampion", 0xFFEADAD1);
 
     @Test
-    public void insertAndGetUser() throws InterruptedException {
+    public void insertAndGetProject() throws InterruptedException {
 
         // BEFORE : Adding a new project
         this.database.projectDao().insertAllProjects(PROJECT_DEMO);
 
         // TEST
-        Project project = LiveDataTestUtil.getValue(this.database.projectDao().getAllProjects());
+        List<Project> project = LiveDataTestUtil.getValue(this.database.projectDao().getAllProjects());
 
-        assertTrue(project.getName().equals(PROJECT_DEMO.getName()) && project.getId() == PROJECT_ID);
+        assertTrue(project.get(0).getName().equals(PROJECT_DEMO.getName()) && project.get(0).getId() == PROJECT_ID);
 
     }
 
