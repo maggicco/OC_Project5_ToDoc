@@ -25,10 +25,17 @@ import com.cleanup.todoc.model.Task;
 
 
 public class MainActivity extends AppCompatActivity implements TasksAdapter.DeleteTaskListener {
+
+    /**
+     * TaskViewModel
+     */
+    private TaskViewModel taskViewModel;
+
+    // TODO: 30/12/2021 check how to get projects  
     /**
      * List of all projects available in the application
      */
-    private final Project[] allProjects = Project.getAllProjects();
+    private final Project[] allProjects = taskViewModel.getAllProjects().observe(this::);
 
     /**
      * List of all current tasks of the application
