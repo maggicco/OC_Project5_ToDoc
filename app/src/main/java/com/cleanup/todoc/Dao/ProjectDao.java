@@ -13,6 +13,7 @@ import java.util.List;
 @Dao
 public interface ProjectDao {
 
+    // TODO: 22/12/2021 query to past all projects to spinner 
     @Query("SELECT * FROM project")
     LiveData<List<Project>> getAllProjects();
 

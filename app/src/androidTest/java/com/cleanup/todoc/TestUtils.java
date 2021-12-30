@@ -4,15 +4,16 @@ import android.view.View;
 
 import androidx.annotation.IdRes;
 import androidx.recyclerview.widget.RecyclerView;
+import androidx.test.espresso.PerformException;
+import androidx.test.espresso.UiController;
 import androidx.test.espresso.ViewAction;
 import androidx.test.espresso.matcher.ViewMatchers;
+import androidx.test.espresso.util.HumanReadables;
 
 import org.hamcrest.Matcher;
 import org.hamcrest.Matchers;
 
-/**
- * Created by dannyroa on 5/9/15.
- */
+
 public class TestUtils {
 
     public static <VH extends RecyclerView.ViewHolder> ViewAction actionOnItemViewAtPosition(int position,
@@ -27,7 +28,7 @@ public class TestUtils {
         return new RecyclerViewMatcher(recyclerViewId);
     }
 
-    private static final class ActionOnItemViewAtPositionViewAction< extends RecyclerView
+    private static final class ActionOnItemViewAtPositionViewAction<SaveMyTaskDataBase extends RecyclerView
             .ViewHolder>
             implements
 

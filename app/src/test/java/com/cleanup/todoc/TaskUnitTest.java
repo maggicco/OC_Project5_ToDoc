@@ -14,8 +14,6 @@ import static org.junit.Assert.assertSame;
 
 /**
  * Unit tests for tasks
- *
- * @author Gaëtan HERFRAY
  */
 public class TaskUnitTest {
     @Test

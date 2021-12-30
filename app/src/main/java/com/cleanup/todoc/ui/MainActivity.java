@@ -23,12 +23,7 @@ import com.cleanup.todoc.R;
 import com.cleanup.todoc.model.Project;
 import com.cleanup.todoc.model.Task;
 
-/**
- * <p>Home activity of the application which is displayed when the user opens the app.</p>
- * <p>Displays the list of tasks.</p>
- *
- * @author Gaëtan HERFRAY
- */
+
 public class MainActivity extends AppCompatActivity implements TasksAdapter.DeleteTaskListener {
     /**
      * List of all projects available in the application
@@ -156,9 +151,9 @@ public class MainActivity extends AppCompatActivity implements TasksAdapter.Dele
             // If both project and name of the task have been set
             else if (taskProject != null) {
                 // TODO: Replace this by id of persisted task
-                long id = (long) (Math.random() * 50000);
+                //long id = (long) (Math.random() * 50000);
                 // TODO: 15/12/2021 a voir avec Denis
-                //long id = getTaskId();
+                long id = getTaskId();
 
 
                 Task task = new Task(

@@ -1,5 +1,6 @@
 package com.cleanup.todoc.model;
 
+import androidx.annotation.NonNull;
 import androidx.room.ColumnInfo;
 import androidx.room.Entity;
 import androidx.room.ForeignKey;
@@ -9,8 +10,6 @@ import java.util.Comparator;
 
 /**
  * <p>Model for the tasks of the application.</p>
- *
- * @author Gaëtan HERFRAY
  */
 @Entity(tableName = "task",
         foreignKeys = @ForeignKey(entity = Project.class,
@@ -117,6 +116,14 @@ public class Task {
      */
     private void setCreationTimestamp(long creationTimestamp) {
         this.creationTimestamp = creationTimestamp;
+    }
+
+    public long getProjectId() {
+        return projectId;
+    }
+
+    public long getCreationTimestamp() {
+        return creationTimestamp;
     }
 
     /**

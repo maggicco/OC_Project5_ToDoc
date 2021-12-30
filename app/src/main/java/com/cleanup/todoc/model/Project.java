@@ -9,8 +9,6 @@ import androidx.room.PrimaryKey;
 
 /**
  * <p>Models for project in which tasks are included.</p>
- *
- * @author Gaëtan HERFRAY
  */
 @Entity(tableName = "project")
 public class Project {
@@ -31,10 +29,10 @@ public class Project {
     /**
      * The hex (ARGB) code of the color associated to the project
      */
-    @NonNull
     @ColorInt
     @ColumnInfo(name = "color")
     private final int color;
+
 
     /**
      * Instantiates a new Project.
@@ -43,7 +41,7 @@ public class Project {
      * @param name  the name of the project to set
      * @param color the hex (ARGB) code of the color associated to the project to set
      */
-    private Project(long id, @NonNull String name, @ColorInt int color) {
+    public Project(long id, @NonNull String name, @ColorInt int color) {
         this.id = id;
         this.name = name;
         this.color = color;
