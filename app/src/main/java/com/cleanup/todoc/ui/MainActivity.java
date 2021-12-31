@@ -4,7 +4,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.lifecycle.LiveData;
+import androidx.lifecycle.ViewModelProviders;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import android.content.DialogInterface;
@@ -12,10 +12,8 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.Date;
 import java.util.List;
-
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -23,9 +21,10 @@ import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
 import com.cleanup.todoc.R;
+import com.cleanup.todoc.injection.Injection;
+import com.cleanup.todoc.injection.ViewModelFactory;
 import com.cleanup.todoc.model.Project;
 import com.cleanup.todoc.model.Task;
-
 
 public class MainActivity extends AppCompatActivity implements TasksAdapter.DeleteTaskListener {
 
@@ -39,7 +38,7 @@ public class MainActivity extends AppCompatActivity implements TasksAdapter.Dele
      * List of all projects available in the application
      */
     //private final Project[] allProjects = taskViewModel.getAllProjects().observe(this::);
-    private LiveData<List<Project>> allProjects;
+    private List<Project> allProjects;
 
     /**
      * List of all current tasks of the application
@@ -99,6 +98,11 @@ public class MainActivity extends AppCompatActivity implements TasksAdapter.Dele
 
         listTasks.setAdapter(adapter);
 
+        configureViewModel();
+
+        // TODO: 31/12/2021 paste projects and tasks
+
+
         findViewById(R.id.fab_add_task).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -134,8 +138,17 @@ public class MainActivity extends AppCompatActivity implements TasksAdapter.Dele
 
     @Override
     public void onDeleteTask(Task task) {
-        tasks.remove(task);
+        taskViewModel.deleteTask(task);
         updateTasks();
+    }
+
+    /**
+     * Data Factory
+     */
+    private void configureViewModel(){
+        ViewModelFactory mViewModelFactory = Injection.provideViewModelFactory(this);
+        this.taskViewModel = ViewModelProviders.of(this, mViewModelFactory).get(TaskViewModel.class);
+        this.taskViewModel.init();
     }
 
     /**
@@ -285,13 +298,12 @@ public class MainActivity extends AppCompatActivity implements TasksAdapter.Dele
         return dialog;
     }
 
-    // TODO: 31/12/2021 Fix array adapter problem 
     /**
      * Sets the data of the Spinner with projects to associate to a new task
      */
     private void populateDialogSpinner() {
         final ArrayAdapter<Project> adapter = new ArrayAdapter<>(this,
-                android.R.layout.simple_spinner_item, taskViewModel.getAllProjects());
+                android.R.layout.simple_spinner_item, allProjects);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         if (dialogSpinner != null) {
             dialogSpinner.setAdapter(adapter);
