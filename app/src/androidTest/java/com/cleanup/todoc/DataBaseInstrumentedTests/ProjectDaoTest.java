@@ -58,6 +58,8 @@ public class ProjectDaoTest {
         // TEST
         List<Project> project = LiveDataTestUtil.getValue(this.database.projectDao().getAllProjects());
 
+        assertTrue(project.size() == 1);
+
         assertTrue(project.get(0).getName().equals(PROJECT_DEMO.getName()) && project.get(0).getId() == PROJECT_ID);
 
     }
