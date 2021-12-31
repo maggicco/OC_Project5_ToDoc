@@ -80,20 +80,16 @@ public class MainActivity extends AppCompatActivity implements TasksAdapter.Dele
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
         setContentView(R.layout.activity_main);
 
         listTasks = findViewById(R.id.list_tasks);
         lblNoTasks = findViewById(R.id.lbl_no_task);
 
         listTasks.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false));
-
         listTasks.setAdapter(adapter);
 
         configureViewModel();
-
         getAllProjects();
-
         getTasksList();
 
         findViewById(R.id.fab_add_task).setOnClickListener(v -> showAddTaskDialog());
@@ -140,19 +136,16 @@ public class MainActivity extends AppCompatActivity implements TasksAdapter.Dele
         this.taskViewModel.init();
     }
 
-    // TODO: 31/12/2021 get project and tasks to fix !!!
     // ---
-
     private void getAllProjects() {
         assert this.taskViewModel.getAllProjects() != null;
         this.taskViewModel.getAllProjects().observe(this, this::updateProjects);
     }
+    // ---
     private void updateProjects(List<Project> projects) {
         allProjects = projects;
     }
-
     // ---
-
     private void getTasksList() {
         this.taskViewModel.getTaskList().observe(this, this::updateTasks);
     }
@@ -180,10 +173,7 @@ public class MainActivity extends AppCompatActivity implements TasksAdapter.Dele
             }
             // If both project and name of the task have been set
             else if (taskProject != null) {
-                // TODO: Replace this by id of persisted task
-                //long id = (long) (Math.random() * 50000);
-                // TODO: 15/12/2021 a voir avec Denis
-                long id = getTaskId();
+                long id = taskProject.getId();
 
 
                 Task task = new Task(
@@ -241,6 +231,7 @@ public class MainActivity extends AppCompatActivity implements TasksAdapter.Dele
             lblNoTasks.setVisibility(View.VISIBLE);
             listTasks.setVisibility(View.GONE);
         } else {
+            adapter.updateTasks(tasks);
             lblNoTasks.setVisibility(View.GONE);
             listTasks.setVisibility(View.VISIBLE);
             switch (sortMethod) {

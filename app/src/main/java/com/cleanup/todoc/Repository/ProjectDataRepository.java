@@ -20,6 +20,6 @@ public class ProjectDataRepository {
 
         return this.projectDao.getAllProjects();
 
-    };
+    }
 
 }

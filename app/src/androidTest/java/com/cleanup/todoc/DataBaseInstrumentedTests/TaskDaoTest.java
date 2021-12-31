@@ -47,16 +47,16 @@ public class TaskDaoTest {
 
     //public static long date = new Date().getTime();
 
-    private static Task TASK_ONE = new Task(1, 1L,"Task 1", 1);
+    private static final Task TASK_ONE = new Task(1, 1L,"Task 1", 1);
 
-    private static Task TASK_TWO = new Task(2,1L,"Task 2", 2);
+    private static final Task TASK_TWO = new Task(2,1L,"Task 2", 2);
 
-    private static Task TASK_THREE = new Task(3, 1L, "Task 3", 3);
+    private static final Task TASK_THREE = new Task(3, 1L, "Task 3", 3);
 
     // DATA SET FOR TEST
-    private static long PROJECT_ID = 1L;
+    private static final long PROJECT_ID = 1L;
 
-    private static Project PROJECT_DEMO = new Project(PROJECT_ID, "Projet Tartampion", 0xFFEADAD1);
+    private static final Project PROJECT_DEMO = new Project(PROJECT_ID, "Projet Tartampion", 0xFFEADAD1);
 
     @Test
     public void getTaskWhenEmpty() throws InterruptedException {

@@ -45,9 +45,9 @@ public class ProjectDaoTest {
     }
 
     // DATA SET FOR TEST
-    private static long PROJECT_ID = 1L;
+    private static final long PROJECT_ID = 1L;
 
-    private static Project PROJECT_DEMO = new Project(PROJECT_ID, "Projet Tartampion", 0xFFEADAD1);
+    private static final Project PROJECT_DEMO = new Project(PROJECT_ID, "Projet Tartampion", 0xFFEADAD1);
 
     @Test
     public void insertAndGetProject() throws InterruptedException {
