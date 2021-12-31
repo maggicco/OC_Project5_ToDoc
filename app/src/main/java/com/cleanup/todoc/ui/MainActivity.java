@@ -44,7 +44,7 @@ public class MainActivity extends AppCompatActivity implements TasksAdapter.Dele
      * List of all current tasks of the application
      */
     @NonNull
-    private final ArrayList<Task> tasks = new ArrayList<>();
+    List<Task> tasks;
 
     /**
      * The adapter which handles the list of tasks
@@ -143,13 +143,41 @@ public class MainActivity extends AppCompatActivity implements TasksAdapter.Dele
     }
 
     /**
-     * Data Factory
+     * Data
      */
     private void configureViewModel(){
         ViewModelFactory mViewModelFactory = Injection.provideViewModelFactory(this);
         this.taskViewModel = ViewModelProviders.of(this, mViewModelFactory).get(TaskViewModel.class);
         this.taskViewModel.init();
     }
+
+    // TODO: 31/12/2021 get project and tasks to fix !!!
+    // ---
+
+    private void getCurrentProject(){
+        this.taskViewModel.getAllProjects().observe(this, this::updateHeader);
+    }
+
+    // ---
+
+    private void getTasks(){
+        this.taskViewModel.getTaskList().observe(this, this::updateTasks);
+    }
+
+//    private void createItem(){
+//        Item item = new Item(this.editText.getText().toString(), this.spinner.getSelectedItemPosition(), USER_ID);
+//        this.editText.setText("");
+//        this.itemViewModel.createItem(item);
+//    }
+//
+//    private void deleteItem(Item item){
+//        this.itemViewModel.deleteItem(item.getId());
+//    }
+//
+//    private void updateItem(Item item){
+//        item.setSelected(!item.getSelected());
+//        this.itemViewModel.updateItem(item);
+//    }
 
     /**
      * Called when the user clicks on the positive button of the Create Task Dialog.
@@ -222,7 +250,7 @@ public class MainActivity extends AppCompatActivity implements TasksAdapter.Dele
      * @param task the task to be added to the list
      */
     private void addTask(@NonNull Task task) {
-        tasks.add(task);
+        taskViewModel.insertTask(task);
         updateTasks();
     }
 
