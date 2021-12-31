@@ -4,6 +4,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.lifecycle.ViewModelProvider;
 import androidx.lifecycle.ViewModelProviders;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -11,6 +12,8 @@ import android.content.DialogInterface;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+
+import java.util.Collections;
 import java.util.Date;
 import java.util.List;
 import android.view.View;
@@ -132,7 +135,7 @@ public class MainActivity extends AppCompatActivity implements TasksAdapter.Dele
      */
     private void configureViewModel(){
         ViewModelFactory mViewModelFactory = Injection.provideViewModelFactory(this);
-        this.taskViewModel = ViewModelProviders.of(this, mViewModelFactory).get(TaskViewModel.class);
+        this.taskViewModel = new ViewModelProvider(this, mViewModelFactory).get(TaskViewModel.class);
         this.taskViewModel.init();
     }
 
@@ -174,11 +177,10 @@ public class MainActivity extends AppCompatActivity implements TasksAdapter.Dele
             // If both project and name of the task have been set
             else if (taskProject != null) {
 
-                long id = taskProject.getId();
+//                long id = taskProject.getId();
 
 
                 Task task = new Task(
-                        id,
                         taskProject.getId(),
                         taskName,
                         new Date().getTime()
@@ -237,16 +239,16 @@ public class MainActivity extends AppCompatActivity implements TasksAdapter.Dele
             listTasks.setVisibility(View.VISIBLE);
             switch (sortMethod) {
                 case ALPHABETICAL:
-                    taskViewModel.getAzTaskList();
+                    Collections.sort(tasks, new Task.TaskAZComparator());
                     break;
                 case ALPHABETICAL_INVERTED:
-                    taskViewModel.getZaTaskList();
+                    Collections.sort(tasks, new Task.TaskZAComparator());
                     break;
                 case RECENT_FIRST:
-                    taskViewModel.getYoungestTaskList();
+                    Collections.sort(tasks, new Task.TaskRecentComparator());
                     break;
                 case OLD_FIRST:
-                    taskViewModel.getOldestTaskList();
+                    Collections.sort(tasks, new Task.TaskOldComparator());
                     break;
 
             }

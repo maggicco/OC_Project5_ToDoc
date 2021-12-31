@@ -33,7 +33,6 @@ public class Project {
     @ColumnInfo(name = "color")
     private final int color;
 
-
     /**
      * Instantiates a new Project.
      *
@@ -52,7 +51,6 @@ public class Project {
      *
      * @return all the projects of the application
      */
-    // TODO: 20/12/2021 PROJECT LIST !!!!
     @NonNull
     public static Project[] getAllProjects() {
         return new Project[]{

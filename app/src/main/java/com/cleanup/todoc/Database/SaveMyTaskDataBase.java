@@ -39,8 +39,6 @@ public abstract class SaveMyTaskDataBase extends RoomDatabase {
 
     /**
      * Instance method
-     * @param context
-     * @return ROOM.dataBaseBuilder()
      */
     public static SaveMyTaskDataBase buildDataBase(final Context context) {
         return Room.databaseBuilder(context,
@@ -49,12 +47,7 @@ public abstract class SaveMyTaskDataBase extends RoomDatabase {
                     @Override
                     public void onCreate(@NonNull SupportSQLiteDatabase db) {
                         super.onCreate(db);
-                        Executors.newSingleThreadScheduledExecutor().execute(new Runnable() {
-                            @Override
-                            public void run() {
-                                getInstance(context).projectDao().insertAllProjects(Project.getAllProjects());
-                            }
-                        });
+                        Executors.newSingleThreadScheduledExecutor().execute(() -> getInstance(context).projectDao().insertAllProjects(Project.getAllProjects()));
                     }
                 })
                 .build();

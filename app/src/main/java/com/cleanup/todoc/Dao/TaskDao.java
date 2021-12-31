@@ -14,18 +14,6 @@ public interface TaskDao {
     @Query("SELECT * FROM task")
     LiveData<List<Task>> getTaskList();
 
-    @Query("SELECT * FROM task ORDER BY name ASC")
-    LiveData<List<Task>> getAzTaskList();
-
-    @Query("SELECT * FROM task ORDER BY name DESC")
-    LiveData<List<Task>> getZaTaskList();
-
-    @Query("SELECT * FROM task ORDER BY creationTimestamp DESC")
-    LiveData<List<Task>> getOldestTaskList();
-
-    @Query("SELECT * FROM task ORDER BY creationTimestamp ASC")
-    LiveData<List<Task>> getYoungestTaskList();
-
     @Insert
     void insertTask(Task task);
 

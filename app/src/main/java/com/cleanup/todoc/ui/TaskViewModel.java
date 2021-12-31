@@ -60,51 +60,11 @@ public class TaskViewModel extends ViewModel {
     }
 
     /**
-     *  For Task sort A-Z
-     */
-    public LiveData<List<Task>> getAzTaskList() {
-
-        return taskDataSource.getAzTaskList();
-
-    }
-
-    /**
-     *  For Task sort Z-A
-     */
-    public LiveData<List<Task>> getZaTaskList() {
-
-        return taskDataSource.getZaTaskList();
-
-    }
-
-    /**
-     *  For task sort oldest to youngest
-     */
-    public LiveData<List<Task>> getOldestTaskList() {
-
-        return taskDataSource.getOldestTaskList();
-
-    }
-
-    /**
-     *  For task sort youngest to oldest
-     */
-    public LiveData<List<Task>> getYoungestTaskList() {
-
-        return taskDataSource.getYoungestTaskList();
-
-    }
-
-    /**
      * Create=Insert Task
      */
     public void insertTask(Task task) {
 
-        executor.execute(() -> {
-
-            taskDataSource.insertTask(task);
-
-        });
+        executor.execute(() -> taskDataSource.insertTask(task));
 
     }
 
