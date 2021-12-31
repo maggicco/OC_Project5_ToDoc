@@ -44,8 +44,6 @@ public class ViewModelFactory implements ViewModelProvider.Factory {
 
     }
 
-
-
     private ViewModelFactory(Context context) {
 
         SaveMyTaskDataBase database = SaveMyTaskDataBase.getInstance(context);

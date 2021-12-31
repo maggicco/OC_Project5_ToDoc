@@ -11,7 +11,6 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.cleanup.todoc.R;
 import com.cleanup.todoc.model.Project;
 import com.cleanup.todoc.model.Task;
-
 import java.util.List;
 
 public class TasksAdapter extends RecyclerView.Adapter<TasksAdapter.TaskViewHolder> {

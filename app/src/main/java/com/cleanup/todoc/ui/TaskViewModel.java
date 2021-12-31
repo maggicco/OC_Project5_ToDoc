@@ -7,7 +7,6 @@ import com.cleanup.todoc.Repository.ProjectDataRepository;
 import com.cleanup.todoc.Repository.TaskDataRepository;
 import com.cleanup.todoc.model.Project;
 import com.cleanup.todoc.model.Task;
-
 import java.util.List;
 import java.util.concurrent.Executor;
 

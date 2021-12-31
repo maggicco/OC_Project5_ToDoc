@@ -5,8 +5,6 @@ import androidx.room.Entity;
 import androidx.room.ForeignKey;
 import androidx.room.PrimaryKey;
 
-import java.util.Comparator;
-
 /**
  * <p>Model for the tasks of the application.</p>
  */
