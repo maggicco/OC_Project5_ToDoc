@@ -49,7 +49,7 @@ public class MainActivity extends AppCompatActivity implements TasksAdapter.Dele
     /**
      * The adapter which handles the list of tasks
      */
-    private TasksAdapter adapter;
+    private TasksAdapter adapter = new TasksAdapter(tasks,this);
 
     /**
      * The sort method to be used to display tasks
@@ -101,6 +101,8 @@ public class MainActivity extends AppCompatActivity implements TasksAdapter.Dele
         configureViewModel();
 
         // TODO: 31/12/2021 paste projects and tasks
+        getAllProjects();
+        getTasksList();
 
 
         findViewById(R.id.fab_add_task).setOnClickListener(new View.OnClickListener() {
@@ -154,14 +156,22 @@ public class MainActivity extends AppCompatActivity implements TasksAdapter.Dele
     // TODO: 31/12/2021 get project and tasks to fix !!!
     // ---
 
-    private void getCurrentProject(){
-        this.taskViewModel.getAllProjects().observe(this, this::updateHeader);
+    private void getAllProjects() {
+        this.taskViewModel.getAllProjects();
+        //.observe(this, this::updateProjects);
     }
+//    private void updateProjects(List<Project> projects) {
+//        this.adapter.update
+//    }
 
     // ---
 
-    private void getTasks(){
+    private void getTasksList() {
         this.taskViewModel.getTaskList().observe(this, this::updateTasks);
+    }
+
+    private void updateTasks(List<Task> tasks) {
+        this.adapter.updateTasks(tasks);
     }
 
 //    private void createItem(){
