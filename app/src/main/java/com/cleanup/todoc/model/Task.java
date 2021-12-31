@@ -1,5 +1,6 @@
 package com.cleanup.todoc.model;
 
+import static androidx.room.ForeignKey.CASCADE;
 import androidx.room.ColumnInfo;
 import androidx.room.Entity;
 import androidx.room.ForeignKey;
@@ -13,7 +14,8 @@ import java.util.Comparator;
 @Entity(tableName = "task",
         foreignKeys = @ForeignKey(entity = Project.class,
         parentColumns = "id",
-        childColumns = "projectId"))
+        childColumns = "projectId",
+        onDelete = CASCADE))
 public class Task {
     /**
      * The unique identifier of the task
