@@ -29,23 +29,15 @@ public class TaskDaoTest {
     public void initDb() throws Exception {
 
         this.database = Room.inMemoryDatabaseBuilder(InstrumentationRegistry.getContext(),
-
                 SaveMyTaskDataBase.class)
-
                 .allowMainThreadQueries()
-
                 .build();
-
     }
 
     @After
     public void closeDb() throws Exception {
-
         database.close();
-
     }
-
-    //public static long date = new Date().getTime();
 
     private static final Task TASK_ONE = new Task(1, 1L,"Task 1", 1);
 
@@ -75,9 +67,7 @@ public class TaskDaoTest {
         this.database.projectDao().insertAllProjects(PROJECT_DEMO);
 
         this.database.taskDao().insertTask(TASK_ONE);
-
         this.database.taskDao().insertTask(TASK_TWO);
-
         this.database.taskDao().insertTask(TASK_THREE);
 
         // TEST

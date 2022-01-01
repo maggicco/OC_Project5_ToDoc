@@ -17,7 +17,6 @@ import java.util.List;
 @RunWith(AndroidJUnit4.class)
 public class ProjectDaoTest {
 
-    // FOR DATA
     private SaveMyTaskDataBase database;
 
     @Rule
@@ -25,43 +24,29 @@ public class ProjectDaoTest {
 
     @Before
     public void initDb() throws Exception {
-
         this.database = Room.inMemoryDatabaseBuilder(InstrumentationRegistry.getContext(),
-
                 SaveMyTaskDataBase.class)
-
                 .allowMainThreadQueries()
-
                 .build();
-
     }
-
 
     @After
     public void closeDb() throws Exception {
-
         database.close();
-
     }
 
     // DATA SET FOR TEST
     private static final long PROJECT_ID = 1L;
-
     private static final Project PROJECT_DEMO = new Project(PROJECT_ID, "Projet Tartampion", 0xFFEADAD1);
 
     @Test
     public void insertAndGetProject() throws InterruptedException {
-
         // BEFORE : Adding a new project
         this.database.projectDao().insertAllProjects(PROJECT_DEMO);
-
         // TEST
         List<Project> project = LiveDataTestUtil.getValue(this.database.projectDao().getAllProjects());
 
         assertTrue(project.size() == 1);
-
         assertTrue(project.get(0).getName().equals(PROJECT_DEMO.getName()) && project.get(0).getId() == PROJECT_ID);
-
     }
-
 }
