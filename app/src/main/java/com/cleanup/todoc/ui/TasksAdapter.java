@@ -56,9 +56,6 @@ public class TasksAdapter extends RecyclerView.Adapter<TasksAdapter.TaskViewHold
         taskViewHolder.bind(tasks.get(position));
     }
 
-    // TODO: 31/12/2021      java.lang.NullPointerException: Attempt to invoke interface method
-    //  'int java.util.List.size()' on a null object reference
-    //  at com.cleanup.todoc.ui.TasksAdapter.getItemCount(TasksAdapter.java:61)
     @Override
     public int getItemCount() {
         return tasks.size();
@@ -113,7 +110,7 @@ public class TasksAdapter extends RecyclerView.Adapter<TasksAdapter.TaskViewHold
          * @param itemView the view of the task item
          * @param deleteTaskListener the listener for when a task needs to be deleted to set
          */
-        TaskViewHolder(@NonNull View itemView, @NonNull DeleteTaskListener deleteTaskListener) {
+        TaskViewHolder(View itemView, DeleteTaskListener deleteTaskListener) {
             super(itemView);
 
             this.deleteTaskListener = deleteTaskListener;

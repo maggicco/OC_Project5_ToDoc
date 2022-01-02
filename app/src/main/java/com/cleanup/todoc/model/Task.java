@@ -5,6 +5,7 @@ import androidx.room.ColumnInfo;
 import androidx.room.Entity;
 import androidx.room.ForeignKey;
 import androidx.room.Ignore;
+import androidx.room.Index;
 import androidx.room.PrimaryKey;
 import java.util.Comparator;
 
@@ -15,7 +16,8 @@ import java.util.Comparator;
         foreignKeys = @ForeignKey(entity = Project.class,
         parentColumns = "id",
         childColumns = "projectId",
-        onDelete = CASCADE))
+        onDelete = CASCADE),
+        indices = @Index(value="projectId"))
 public class Task {
     /**
      * The unique identifier of the task

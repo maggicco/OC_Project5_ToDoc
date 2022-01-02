@@ -1,10 +1,8 @@
 package com.cleanup.todoc.Repository;
 
 import androidx.lifecycle.LiveData;
-
 import com.cleanup.todoc.Dao.ProjectDao;
 import com.cleanup.todoc.model.Project;
-
 import java.util.List;
 
 public class ProjectDataRepository {
