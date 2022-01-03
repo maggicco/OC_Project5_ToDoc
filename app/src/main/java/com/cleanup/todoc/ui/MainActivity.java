@@ -11,6 +11,8 @@ import android.content.DialogInterface;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Date;
 import java.util.List;
@@ -41,7 +43,7 @@ public class MainActivity extends AppCompatActivity implements TasksAdapter.Dele
     /**
      * List of all current tasks of the application
      */
-    List<Task> tasks;
+    List<Task> tasks = new ArrayList<>();
 
     /**
      * The adapter which handles the list of tasks
@@ -174,9 +176,6 @@ public class MainActivity extends AppCompatActivity implements TasksAdapter.Dele
             }
             // If both project and name of the task have been set
             else if (taskProject != null) {
-
-//                long id = taskProject.getId();
-
 
                 Task task = new Task(
                         taskProject.getId(),
